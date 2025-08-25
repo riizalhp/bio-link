@@ -1,0 +1,5 @@
+{
+  "name": "Aiko Bio Page",
+  "description": "A personal link-in-bio website, rebuilt in React and Tailwind CSS, showcasing a user's profile, social links, content, products, and upcoming events.",
+  "requestFramePermissions": []
+}
