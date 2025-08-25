@@ -4,6 +4,7 @@ import Highlights from './components/Highlights';
 import Availability from './components/Availability';
 import Events from './components/Events';
 import Pricing from './components/Ad';
+import ContactMe from './components/ContactMe';
 import Footer from './components/Footer';
 import { RiizalhpLogo } from './components/icons/Icons';
 import { Section, ContentWrapper, Spacing, LineDivider } from './components/Layout';
@@ -56,6 +57,15 @@ const App: React.FC = () => {
           </ContentWrapper>
         </Section>
       </main>
+
+      <Section>
+        <ContentWrapper>
+          <Spacing size={48} />
+          <ContactMe />
+          <Spacing size={48} />
+          <LineDivider />
+        </ContentWrapper>
+      </Section>
 
       <Footer />
     </div>
