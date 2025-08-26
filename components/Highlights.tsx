@@ -28,7 +28,7 @@ const Highlights: React.FC = () => {
         <Spacing size={4} />
         <p className="opacity-60">I specialize in crafting high-quality websites and applications.</p>
         <Spacing size={32} />
-        <a href="#" className="text-black font-bold">Send me a message</a>
+        <a href="https://wa.me/6288225444313" target="_blank" rel="noopener noreferrer" className="text-black font-bold">Send me a message</a>
       </div>
 
       <div className="sm:col-span-2 p-6 rounded-[32px] bg-[#181818]">

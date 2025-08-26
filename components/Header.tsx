@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         </div>
         <Spacing size={24} />
         <div className="flex flex-col sm:flex-row justify-center items-center gap-2.5 w-full">
-          <a href="https://riizalhp.site/" target="_blank"  rel="noopener noreferrer" className="flex h-12 px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-[#181818] text-white font-medium transition-all duration-400 ease-in-out hover:shadow-[0_6px_20px_0_rgba(0,0,0,0.05)] w-full sm:w-auto">
+          <a href="https://riizalhp.web.id/" target="_blank"  rel="noopener noreferrer" className="flex h-12 px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-[#181818] text-white font-medium transition-all duration-400 ease-in-out hover:shadow-[0_6px_20px_0_rgba(0,0,0,0.05)] w-full sm:w-auto">
             <PortfolioIcon />
             <span>My portfolio</span>
           </a>
