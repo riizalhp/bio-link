@@ -4,7 +4,47 @@ import { PricingCategory, PricingTier } from '../types';
 import { Spacing } from './Layout';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 
-const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => (
+const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    window.location.hash = path;
+};
+
+const renderFeature = (feature: string) => {
+    const sectionLinkText = 'Lihat Section';
+    const pageLinkText = 'Lihat Halaman';
+
+    if (feature.includes(sectionLinkText)) {
+        const parts = feature.split(sectionLinkText);
+        return (
+            <>
+                {parts[0]}
+                <a href="#/sections" onClick={(e) => handleLinkClick(e, '#/sections')} className="font-semibold text-[#78ff00] underline transition-colors hover:text-white">{sectionLinkText}</a>
+                {parts[1]}
+            </>
+        );
+    }
+
+    if (feature.includes(pageLinkText)) {
+        const parts = feature.split(pageLinkText);
+        return (
+            <>
+                {parts[0]}
+                <a href="#/pages" onClick={(e) => handleLinkClick(e, '#/pages')} className="font-semibold text-[#78ff00] underline transition-colors hover:text-white">{pageLinkText}</a>
+                {parts[1]}
+            </>
+        );
+    }
+
+    return feature;
+};
+
+
+const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => {
+    const message = `Halo, saya tertarik dengan paket "${tier.name}".`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/6288225444313?text=${encodedMessage}`;
+
+    return (
     <div className={`relative flex flex-col p-6 bg-[#181818] rounded-3xl h-full ${tier.popular ? 'border-2 border-[#78ff00]' : ''}`}>
         {tier.popular && (
             <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#78ff00] text-black text-sm font-semibold rounded-full whitespace-nowrap">
@@ -16,40 +56,62 @@ const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => (
             <Spacing size={8} />
             <p className="text-sm text-gray-400 h-12">{tier.description}</p>
             <Spacing size={16} />
-            <div className="text-left">
-                {tier.oldPrice && <s className="text-lg text-gray-500">Rp {tier.oldPrice}</s>}
-                <p className="text-3xl font-bold text-white">
-                    <span className="text-lg">{tier.pricePrefix}</span> Rp {tier.newPrice}
+            <div className="flex items-baseline gap-2 flex-wrap">
+                <p className="text-3xl font-bold text-[#78ff00]">
+                    {tier.pricePrefix && <span className="text-xl font-medium">{tier.pricePrefix} </span>}
+                    Rp {tier.newPrice}
                 </p>
+                {tier.oldPrice && (
+                    <s className="text-xl text-gray-500">Rp {tier.oldPrice}</s>
+                )}
             </div>
             <Spacing size={24} />
             <ul className="space-y-3 text-left">
                 {tier.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
                         <svg className="w-5 h-5 text-[#78ff00] shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                        <span className="text-gray-300">{feature}</span>
+                        <span className="text-gray-300">{renderFeature(feature)}</span>
                     </li>
                 ))}
             </ul>
         </div>
         <Spacing size={24} />
-        <a href="#" className="w-full mt-auto h-12 flex items-center justify-center bg-[#78ff00] text-black rounded-2xl font-semibold transition-all duration-400 ease-in-out text-center hover:bg-opacity-80">
+        <a 
+            href={whatsappUrl} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full mt-auto h-12 flex items-center justify-center bg-[#78ff00] text-black rounded-2xl font-semibold transition-all duration-400 ease-in-out text-center hover:bg-opacity-80">
             {tier.buttonText}
         </a>
     </div>
-);
+    );
+};
 
 
 const PricingCategoryView: React.FC<{ category: PricingCategory }> = ({ category }) => {
+    // State for mobile slider (1 card view)
     const popularTierIndex = category.tiers.findIndex(tier => tier.popular);
     const [currentSlide, setCurrentSlide] = useState(popularTierIndex !== -1 ? popularTierIndex : 0);
+    
+    // State for desktop slider (3 card view)
+    const [desktopSlide, setDesktopSlide] = useState(1);
+    const TiersToShowDesktop = 3;
+    const maxDesktopSlide = category.tiers.length - TiersToShowDesktop;
 
+    // Mobile navigation
     const nextSlide = () => {
         setCurrentSlide(prev => Math.min(prev + 1, category.tiers.length - 1));
     };
-
     const prevSlide = () => {
         setCurrentSlide(prev => Math.max(prev - 1, 0));
+    };
+
+    // Desktop navigation
+    const nextDesktop = () => {
+        setDesktopSlide(prev => Math.min(prev + 1, maxDesktopSlide));
+    };
+    const prevDesktop = () => {
+        setDesktopSlide(prev => Math.max(prev - 1, 0));
     };
 
     return (
@@ -57,16 +119,48 @@ const PricingCategoryView: React.FC<{ category: PricingCategory }> = ({ category
             <h2 className="text-2xl font-bold text-center">{category.title}</h2>
             <Spacing size={8} />
             <p className="text-center text-gray-400 max-w-lg">{category.description}</p>
-            <Spacing size={24} />
+            <Spacing size={48} />
 
-            {/* Grid for medium and up */}
-            <div className="w-full hidden md:grid md:grid-cols-3 gap-8">
-                {category.tiers.map((tier) => (
-                    <PricingCard key={tier.name} tier={tier} />
-                ))}
+            {/* Desktop Slider (3 cards visible) */}
+            <div className="w-full hidden md:block relative">
+                 <div className="overflow-hidden">
+                    <div
+                        className="flex -mx-2 transition-transform duration-500 ease-in-out"
+                        style={{
+                            transform: `translateX(calc(-${desktopSlide * (100 / TiersToShowDesktop)}% - ${desktopSlide * 1}rem / ${TiersToShowDesktop}))`
+                        }}
+                    >
+                        {category.tiers.map((tier) => (
+                           <div key={tier.name} className="px-2" style={{ width: `${100 / TiersToShowDesktop}%`}}>
+                                <PricingCard tier={tier} />
+                           </div>
+                        ))}
+                    </div>
+                </div>
+
+                {maxDesktopSlide > 0 && (
+                    <>
+                        <button
+                            onClick={prevDesktop}
+                            disabled={desktopSlide === 0}
+                            className="absolute top-1/2 -translate-y-1/2 -left-6 p-2 bg-white/10 rounded-full disabled:opacity-30 disabled:cursor-not-allowed text-white hover:bg-white/20 transition-all"
+                            aria-label="Previous tiers"
+                        >
+                            <ChevronLeftIcon />
+                        </button>
+                        <button
+                            onClick={nextDesktop}
+                            disabled={desktopSlide >= maxDesktopSlide}
+                            className="absolute top-1/2 -translate-y-1/2 -right-6 p-2 bg-white/10 rounded-full disabled:opacity-30 disabled:cursor-not-allowed text-white hover:bg-white/20 transition-all"
+                            aria-label="Next tiers"
+                        >
+                            <ChevronRightIcon />
+                        </button>
+                    </>
+                )}
             </div>
 
-            {/* Slider for small screens */}
+            {/* Mobile Slider (1 card visible) */}
             <div className="w-full md:hidden">
                 <div className="relative max-w-sm mx-auto">
                     <div className="w-full px-8" aria-live="polite">

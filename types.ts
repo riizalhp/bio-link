@@ -58,3 +58,9 @@ export interface IconLink {
   url: string;
   imageUrl: string;
 }
+
+export interface InfoItem {
+  icon: string;
+  title: string;
+  description: string;
+}
