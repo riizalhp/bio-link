@@ -22,7 +22,7 @@ const Events: React.FC = () => {
           <Spacing size={4} />
           <p className="text-white/60 max-w-xs">The launch of our new AI-powered resume builder.</p>
           <Spacing size={20} />
-          <a href="#" className="inline-flex h-12 px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-[#78ff00] text-black font-medium transition-all duration-400 ease-in-out hover:shadow-[0_6px_20px_0_rgba(120,255,0,0.1)]">
+          <a href="https://www.resumeai.fun/" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 px-4 py-3 justify-center items-center gap-2.5 rounded-2xl bg-[#78ff00] text-black font-medium transition-all duration-400 ease-in-out hover:shadow-[0_6px_20px_0_rgba(120,255,0,0.1)]">
             <FreeRegisterIcon isBlack={true}/>
             <span>Try it Free</span>
           </a>
