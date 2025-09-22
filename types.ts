@@ -59,6 +59,7 @@ export interface IconLink {
   imageUrl: string;
 }
 
+// FIX: Add missing InfoItem type for InfoListPage component.
 export interface InfoItem {
   icon: string;
   title: string;

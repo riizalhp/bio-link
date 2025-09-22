@@ -1,4 +1,4 @@
-import { SocialLink, Article, PricingCategory, Product, Book, MainLink, IconLink, InfoItem } from './types';
+import { SocialLink, Article, PricingCategory, Product, Book, MainLink, IconLink } from './types';
 
 export const PROFILE_DATA = {
   name: 'Rizal Hanifa Pratama',
@@ -354,49 +354,4 @@ export const PRICING_DATA: PricingCategory[] = [
       },
     ],
   },
-];
-
-export const SECTIONS_LIST: InfoItem[] = [
-  { icon: 'HeroIcon', title: 'Hero', description: 'Bagian paling atas yang menampilkan headline, foto atau ilustrasi utama, serta tombol ajakan untuk bertindak.' },
-  { icon: 'AboutIcon', title: 'About', description: 'Bagian yang menjelaskan profil singkat, latar belakang, atau cerita tentang diri maupun bisnis.' },
-  { icon: 'StatsIcon', title: 'Statistik', description: 'Bagian untuk menampilkan angka-angka pencapaian seperti jumlah klien, project selesai, atau pengalaman.' },
-  { icon: 'PortfolioIcon', title: 'Portfolio Project', description: 'Bagian untuk menampilkan hasil karya atau project yang pernah dikerjakan dengan gambar dan penjelasan.' },
-  { icon: 'GalleryIcon', title: 'Gallery Foto atau Video', description: 'Bagian untuk menampilkan dokumentasi visual, cocok untuk produk fisik atau acara.' },
-  { icon: 'AchievementsIcon', title: 'Achievements atau Prestasi', description: 'Bagian khusus untuk menampilkan penghargaan, pencapaian, atau milestone penting.' },
-  { icon: 'CertificationsIcon', title: 'Certifications', description: 'Bagian untuk menampilkan sertifikat keahlian, kursus, atau pelatihan yang sudah diikuti.' },
-  { icon: 'ServicesIcon', title: 'Services', description: 'Bagian untuk menjelaskan layanan yang ditawarkan dalam bentuk daftar dengan deskripsi singkat.' },
-  { icon: 'ProductListIcon', title: 'Product List', description: 'Bagian untuk menampilkan daftar produk yang dijual, cocok untuk UMKM.' },
-  { icon: 'PricingTableIcon', title: 'Pricing Table', description: 'Bagian yang menampilkan daftar harga paket layanan atau produk dalam bentuk tabel.' },
-  { icon: 'PromoBannerIcon', title: 'Promo Banner', description: 'Bagian untuk menampilkan penawaran khusus, diskon, atau promo musiman.' },
-  { icon: 'TestimonialsIcon', title: 'Testimonials', description: 'Bagian yang menampilkan pengalaman dan pendapat klien atau pelanggan.' },
-  { icon: 'ClientLogosIcon', title: 'Client atau Partner Logos', description: 'Bagian untuk menampilkan logo klien atau mitra untuk menambah kredibilitas.' },
-  { icon: 'MediaCoverageIcon', title: 'Media Coverage', description: 'Bagian untuk menampilkan liputan dari media, blog, atau publikasi lainnya.' },
-  { icon: 'ContactFormIcon', title: 'Contact Form', description: 'Bagian formulir yang memungkinkan pengunjung mengirim pesan langsung ke email atau WhatsApp.' },
-  { icon: 'SocialLinksIcon', title: 'Link Sosial Media', description: 'Bagian yang berisi tautan menuju akun sosial media resmi.' },
-  { icon: 'NewsletterIcon', title: 'Newsletter Signup', description: 'Bagian untuk mengajak pengunjung berlangganan update atau artikel melalui email.' },
-  { icon: 'BookingIcon', title: 'Booking atau Reservasi', description: 'Bagian untuk pemesanan layanan, misalnya reservasi kursi, booking jadwal, atau appointment.' },
-  { icon: 'DonationIcon', title: 'Donation atau Support Me', description: 'Bagian untuk mendukung personal brand atau kreator melalui donasi digital.' },
-  { icon: 'FaqIcon', title: 'FAQ', description: 'Bagian berisi daftar pertanyaan yang sering ditanyakan pengunjung, lengkap dengan jawabannya.' },
-  { icon: 'EventIcon', title: 'Event atau Countdown', description: 'Bagian untuk menampilkan acara mendatang, termasuk hitung mundur waktu.' },
-  { icon: 'CtaIcon', title: 'Call to Action Highlight', description: 'Bagian yang mengarahkan pengunjung melakukan aksi tertentu, seperti membeli atau mendaftar.' },
-];
-
-export const PAGES_LIST: InfoItem[] = [
-  { icon: 'HomeIcon', title: 'Home', description: 'Halaman utama yang menampilkan ringkasan dari seluruh isi website.' },
-  { icon: 'AboutIcon', title: 'About', description: 'Halaman khusus yang menjelaskan tentang perusahaan atau individu secara lebih detail.' },
-  { icon: 'ServicesIcon', title: 'Services atau Produk', description: 'Halaman yang menjelaskan layanan atau produk yang ditawarkan secara lengkap.' },
-  { icon: 'PortfolioIcon', title: 'Portfolio atau Gallery', description: 'Halaman yang menampilkan dokumentasi project atau karya dalam bentuk galeri visual.' },
-  { icon: 'BlogIcon', title: 'Blog atau Artikel', description: 'Halaman yang berisi artikel, tulisan, atau update berita untuk SEO dan edukasi audiens.' },
-  { icon: 'ContactFormIcon', title: 'Contact', description: 'Halaman yang berisi informasi kontak, termasuk alamat, telepon, email, dan form.' },
-  { icon: 'PricingTableIcon', title: 'Pricing', description: 'Halaman yang menampilkan struktur harga layanan atau produk.' },
-  { icon: 'TestimonialsIcon', title: 'Testimoni', description: 'Halaman khusus untuk menampilkan kumpulan ulasan dan pengalaman pelanggan.' },
-  { icon: 'FaqIcon', title: 'FAQ', description: 'Halaman yang memuat pertanyaan umum beserta jawabannya untuk mempermudah pengunjung.' },
-  { icon: 'PromoBannerIcon', title: 'Promo atau Penawaran Khusus', description: 'Halaman yang menampilkan promo terbaru, diskon, atau campaign tertentu.' },
-  { icon: 'BookingIcon', title: 'Booking atau Reservation', description: 'Halaman untuk pemesanan layanan seperti reservasi hotel, salon, atau konsultasi.' },
-  { icon: 'ClientLogosIcon', title: 'Clients atau Partners', description: 'Halaman yang menampilkan daftar klien atau mitra yang sudah bekerja sama.' },
-  { icon: 'CareerIcon', title: 'Career atau Lowongan', description: 'Halaman yang menampilkan lowongan pekerjaan yang sedang dibuka oleh perusahaan.' },
-  { icon: 'CsrIcon', title: 'CSR', description: 'Halaman yang menjelaskan kontribusi sosial perusahaan, seperti program donasi.' },
-  { icon: 'InvestorIcon', title: 'Investor atau Media Room', description: 'Halaman untuk investor atau media, berisi laporan, press release, atau data penting.' },
-  { icon: 'DashboardIcon', title: 'Dashboard atau Login Area', description: 'Halaman untuk karyawan atau pelanggan masuk ke sistem internal.' },
-  { icon: 'HelpdeskIcon', title: 'Helpdesk atau Ticketing', description: 'Halaman untuk mendukung layanan pelanggan, termasuk sistem tiket aduan.' },
 ];

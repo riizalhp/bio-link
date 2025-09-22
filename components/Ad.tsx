@@ -4,37 +4,7 @@ import { PricingCategory, PricingTier } from '../types';
 import { Spacing } from './Layout';
 import { ChevronLeftIcon, ChevronRightIcon } from './icons/Icons';
 
-const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    e.preventDefault();
-    window.location.hash = path;
-};
-
 const renderFeature = (feature: string) => {
-    const sectionLinkText = 'Lihat Section';
-    const pageLinkText = 'Lihat Halaman';
-
-    if (feature.includes(sectionLinkText)) {
-        const parts = feature.split(sectionLinkText);
-        return (
-            <>
-                {parts[0]}
-                <a href="#/sections" onClick={(e) => handleLinkClick(e, '#/sections')} className="font-semibold text-[#78ff00] underline transition-colors hover:text-white">{sectionLinkText}</a>
-                {parts[1]}
-            </>
-        );
-    }
-
-    if (feature.includes(pageLinkText)) {
-        const parts = feature.split(pageLinkText);
-        return (
-            <>
-                {parts[0]}
-                <a href="#/pages" onClick={(e) => handleLinkClick(e, '#/pages')} className="font-semibold text-[#78ff00] underline transition-colors hover:text-white">{pageLinkText}</a>
-                {parts[1]}
-            </>
-        );
-    }
-
     return feature;
 };
 
